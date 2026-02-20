@@ -170,7 +170,7 @@ jobs:
           repository: bevyengine/bevy
           ref: main
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@beta
+        uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
       - name: Install Bevy dependencies
@@ -210,7 +210,7 @@ jobs:
           repository: bevyengine/bevy
           ref: main
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@beta
+        uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
           targets: ${{ matrix.target.target }}
@@ -284,7 +284,7 @@ jobs:
           repository: bevyengine/bevy
           ref: main
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@beta
+        uses: dtolnay/rust-toolchain@stable
       - name: Install Bevy dependencies
         run: |
           sudo apt-get update;
