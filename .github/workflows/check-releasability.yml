@@ -133,6 +133,9 @@ jobs:
           # needs a math backend
           - crate: "bevy_window"
             extra: "--no-default-features"
+          # needs a math backend
+          - crate: "bevy_input_focus"
+            extra: "--no-default-features"
           # needs either x11 or wayland feature enabled
           - crate: "bevy_winit"
             extra: "--no-default-features"
@@ -160,6 +163,8 @@ jobs:
           - crate: "bevy_transform"
             extra: "--no-default-features --features bevy_math/libm"
           - crate: "bevy_window"
+            extra: "--no-default-features --features bevy_math/libm"
+          - crate: "bevy_input_focus"
             extra: "--no-default-features --features bevy_math/libm"
           - crate: "bevy_winit"
             extra: "--no-default-features --features winit/x11"
