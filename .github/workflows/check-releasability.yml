@@ -340,19 +340,21 @@ jobs:
         # continue-on-error: true
         run: |
           cargo +nightly doc -Zunstable-options -Zrustdoc-scrape-examples --no-deps --all-features
-      # - name: Fail when needed
-      #   run: |
-      #     if [[ ${{ steps.initial.outputs.initial }} == "false" ]]; then
-      #       if [[ "${{ steps.scrape.outcome }}" == "success" ]]; then
-      #         echo "Failure expected but succeeded"
-      #         exit 2
-      #       fi
-      #     else
-      #       if [[ "${{ steps.scrape.outcome }}" == "failure" ]]; then
-      #         echo "Success expected but failed"
-      #         exit 1
-      #       fi
-      #     fi
+        env:
+          RUSTDOCFLAGS: "-Zunstable-options --cfg=docsrs --generate-link-to-definition --generate-macro-expansion --html-after-content docs-rs/trait-tags.html"
+      - name: Fail when needed
+        run: |
+          if [[ ${{ steps.initial.outputs.initial }} == "false" ]]; then
+            if [[ "${{ steps.scrape.outcome }}" == "success" ]]; then
+              echo "Failure expected but succeeded"
+              exit 2
+            fi
+          else
+            if [[ "${{ steps.scrape.outcome }}" == "failure" ]]; then
+              echo "Success expected but failed"
+              exit 1
+            fi
+          fi
 
   example-doc-check2:
     name: Example Documentation
@@ -396,19 +398,21 @@ jobs:
         # continue-on-error: true
         run: |
           cargo +nightly doc -Zunstable-options -Zrustdoc-scrape-examples --no-deps --all-features
-      # - name: Fail when needed
-      #   run: |
-      #     if [[ ${{ steps.initial.outputs.initial }} == "false" ]]; then
-      #       if [[ "${{ steps.scrape.outcome }}" == "success" ]]; then
-      #         echo "Failure expected but succeeded"
-      #         exit 2
-      #       fi
-      #     else
-      #       if [[ "${{ steps.scrape.outcome }}" == "failure" ]]; then
-      #         echo "Success expected but failed"
-      #         exit 1
-      #       fi
-      #     fi
+        env:
+          RUSTDOCFLAGS: "-Zunstable-options --cfg=docsrs --generate-link-to-definition --generate-macro-expansion --html-after-content docs-rs/trait-tags.html"
+      - name: Fail when needed
+        run: |
+          if [[ ${{ steps.initial.outputs.initial }} == "false" ]]; then
+            if [[ "${{ steps.scrape.outcome }}" == "success" ]]; then
+              echo "Failure expected but succeeded"
+              exit 2
+            fi
+          else
+            if [[ "${{ steps.scrape.outcome }}" == "failure" ]]; then
+              echo "Success expected but failed"
+              exit 1
+            fi
+          fi
 
   release-private-registry:
     name: Release to Private Registry
